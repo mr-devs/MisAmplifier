@@ -1,4 +1,4 @@
-import {Helios} from "helios-web";
+import {Helios} from https://cdn.skypack.dev/helios-web?min;
 
 let nodes = {
   "0": {
