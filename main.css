@@ -6,3 +6,17 @@
   bottom: 25px;
   background: #f0a88c;
 }
+#tooltip {
+  position: absolute;
+  display: none;
+  margin-left: 15px;
+  padding: 3px;
+  position: absolute;
+  z-index: 1000;
+  text-shadow:
+      -1px -1px 0 #FFF,  
+       1px -1px 0 #FFF,
+      -1px  1px 0 #FFF,
+       1px  1px 0 #FFF;
+  pointer-events: none;
+}
