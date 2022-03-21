@@ -28,6 +28,40 @@ console.log(edges)
 // let useCategoricalColormap = false;
 // let defaultOutline = 0.25;
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if(urlParams.has("network")){
+	networkName = urlParams.get("network");
+}
+let use2D = false;
+if(urlParams.has("use2d")){
+	use2D = true;
+}
+
+let advancedEdges = false;
+if(urlParams.has("advanced")){
+	advancedEdges = true;
+}
+
+let startZoomLevel = null;
+if(urlParams.has("zoom")){
+	startZoomLevel = +urlParams.get("zoom");
+}
+
+let darkBackground = false;
+let backgroundColor = [1.0,1.0,1.0,1.0]
+
+if(urlParams.has("dark")){
+	darkBackground = true;
+	backgroundColor = [0.0,0.0,0.0,1.0]
+}
+
+let additiveBlending = false;
+if(urlParams.has("additive") && darkBackground){
+	additiveBlending = true;
+}
+
 let nodeCount = Object.keys(nodes).length;
 console.log("Node count")
 console.log(nodeCount)
