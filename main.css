@@ -1,8 +1,8 @@
 #netviz {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: #f0e68c;
+  top: 100px;
+  right: 25px;
+  left: 25px;
+  bottom: 25px;
+  background: #f0a88c;
 }
