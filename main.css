@@ -4,19 +4,49 @@
   right: 25px;
   left: 25px;
   bottom: 25px;
-  background: #f0a88c;
+  background: #FFFFFF;
+}
+.overlay{
+  position: absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
 }
 #tooltip {
-  position: absolute;
-  display: none;
-  margin-left: 15px;
-  padding: 3px;
-  position: absolute;
-  z-index: 1000;
-  text-shadow:
-      -1px -1px 0 #FFF,  
-       1px -1px 0 #FFF,
-      -1px  1px 0 #FFF,
-       1px  1px 0 #FFF;
-  pointer-events: none;
+    position: absolute;
+    display: none;
+    margin-left: 15px;
+    padding: 3px;
+    position: absolute;
+    z-index: 1000;
+    text-shadow:
+        -1px -1px 0 #FFF,
+         1px -1px 0 #FFF,
+        -1px  1px 0 #FFF,
+         1px  1px 0 #FFF;
+    pointer-events: none;
+}
+
+form {
+  width: 400px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+input {
+  padding: 4px 10px;
+  border: .1;
+  font-size: 16px;
+}
+
+.search {
+  width: 75%;
+}
+
+.submit {
+  width: 70px;
+  background-color: #1c87c9;
+  text-align: "center";
+  color: #ffffff;
 }
