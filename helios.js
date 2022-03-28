@@ -3,6 +3,10 @@ import {Helios} from "https://cdn.skypack.dev/helios-web?min";
 // import * as d3Chromatic from "/Users/matthewdeverna/Documents/Projects/helios-test/node_modules/d3-scale-chromatic";
 // import {scaleOrdinal as d3ScaleOrdinal} from "/Users/matthewdeverna/Documents/Projects/helios-test/node_modules/d3-scale";
 
+// import {rgb as d3rgb} from "https://cdn.skypack.dev/d3-color";
+// import * as d3Chromatic from "'https://cdn.skypack.dev/d3-scale-chromatic'";
+// import {scaleOrdinal as d3ScaleOrdinal} from "https://cdn.skypack.dev/d3-scale";
+
 // Set up the nodes and edges location
 // const edges_url = 'https://raw.githubusercontent.com/mr-devs/helios-test/main/data/edges.json'
 // const nodes_url = 'https://raw.githubusercontent.com/mr-devs/helios-test/main/data/nodes.json'
