@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "d3-color": "^3.0.1",
+    "d3-scale-chromatic": "^3.0.0",
+    "helios-web": "^0.3.3",
+    "requirejs": "^2.3.6"
+  },
+  "name": "helios-test",
+  "description": "simple repo to test helios-web",
+  "version": "1.0.0",
+  "main": "helios.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-devs/helios-test.git"
+  },
+  "author": "Matthew DeVerna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-devs/helios-test/issues"
+  },
+  "homepage": "https://github.com/mr-devs/helios-test#readme"
+}

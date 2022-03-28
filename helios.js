@@ -1,5 +1,7 @@
 import {Helios} from "https://cdn.skypack.dev/helios-web?min";
-// import { rgb as d3rgb } from "/Users/matthewdeverna/node_modules/d3-color";
+// import {rgb as d3rgb} from "/Users/matthewdeverna/Documents/Projects/helios-test/node_modules/d3-color";
+// import * as d3Chromatic from "/Users/matthewdeverna/Documents/Projects/helios-test/node_modules/d3-scale-chromatic";
+// import {scaleOrdinal as d3ScaleOrdinal} from "/Users/matthewdeverna/Documents/Projects/helios-test/node_modules/d3-scale";
 
 // Set up the nodes and edges location
 // const edges_url = 'https://raw.githubusercontent.com/mr-devs/helios-test/main/data/edges.json'
@@ -11,9 +13,21 @@ const nodes_url = '../data/nodes_all.json'
 // Fetch data
 let edges_response = await fetch(edges_url);
 let nodes_response = await fetch(nodes_url);
+
 // Decode the JSON into a variable
-let edges = await edges_response.json();
-let nodes = await nodes_response.json();
+let edges = []
+if (edges_response.ok) {
+  edges = await edges_response.json();
+} else {
+  alert("HTTP-Error: " + edges_response.status);
+}
+
+let nodes = {}
+if (nodes_response.ok) {
+  nodes = await nodes_response.json();
+} else {
+  alert("HTTP-Error: " + nodes_response.status);
+}
 
 // Sanity check
 console.log("Nodes")
