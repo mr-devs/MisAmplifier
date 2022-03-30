@@ -67,7 +67,7 @@ let sizeSum = sumValues(sizeDictionary)
 console.log("Size Sum")
 console.log(sizeSum)
 for (const [key, value] of Object.entries(nodes)) {
-  nodes[key]["size"] = Math.log10(sizeDictionary[key]+1.5);
+  nodes[key]["size"] = Math.log10(sizeDictionary[key]+5);
 }
 
 
@@ -169,7 +169,9 @@ let helios = new Helios({
       tooltipElement.style["text-shadow"] =
         "-1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white";
     }
-    if (node.label) {
+    if (node.username) {
+      tooltipElement.textContent = node.username + ' (' + sizeDictionary[node.ID] + ' retweets)';
+    }else if (node.label) {
       tooltipElement.textContent = node.label;
     }else if (node.title) {
       tooltipElement.textContent = node.title;
@@ -194,7 +196,9 @@ let helios = new Helios({
   }
   if (node) {
     // tooltipElement.style.display = "block";
-    if (node.label) {
+    if (node.username) {
+      tooltipElement.textContent = node.username + ' (' + sizeDictionary[node.ID] + ' retweets)';
+    }else if (node.label) {
       tooltipElement.textContent = node.label;
     }else if (node.title) {
       tooltipElement.textContent = node.title;
@@ -230,7 +234,7 @@ let helios = new Helios({
   if("mag id" in node){
     window.open(`https://explore.openalex.org/works/W${node["mag id"]}`, "helios_mag");
   }else{
-    helios.centerOnNode(node.ID);
+    // helios.centerOnNodes(node.ID); Why does this function break the visualization?
     let user_id = node.ID;
     window.open(
       'https://twitter.com/i/user/' + user_id,
