@@ -243,11 +243,23 @@ let helios = new Helios({
     
   }
 })
+// .nodeColor(node=>{ 
+//   let color = d3rgb(colorScale(node.community));
+//   return [color.r/255,color.g/255,color.b/255];
+// })
 .backgroundColor(backgroundColor)
 .nodeOutlineWidth(node=>node.size*defaultOutline)
 .nodeOutlineColor(backgroundColor)
 .additiveBlending(additiveBlending)
 .edgesOpacity(0.2);
+// .nodeColor(node=>{ // Example on how to define colors
+			// 	let color = d3rgb(colorScale(node.ID));
+			// 	// console.log(""+[color.r,color.g,color.b])
+			// 	return [color.r/255,color.g/255,color.b/255];
+			// })
+			// .nodeSize(node=>{ // Example on how to define size
+			// 	return Math.random()*5+1.0;
+			// });
 // .nodeSize(0.3);
 
 
@@ -277,7 +289,6 @@ let buttonInformation = {
       }
     },
     extra: selection => {
-
     }
   },
   "Size": {
