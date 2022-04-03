@@ -12,8 +12,8 @@ import { select as d3Select } from 'https://cdn.skypack.dev/d3-selection';
 // const edges_url = 'https://raw.githubusercontent.com/mr-devs/helios-test/main/data/edges.json'
 // const nodes_url = 'https://raw.githubusercontent.com/mr-devs/helios-test/main/data/nodes.json'
 
-const edges_url = '../data/edges_all.json'
-const nodes_url = '../data/nodes_all.json'
+const edges_url = '../data/edges_hand_picked.json'
+const nodes_url = '../data/nodes_hand_picked.json'
 
 // Fetch data
 let edges_response = await fetch(edges_url);
@@ -52,24 +52,27 @@ function sortByCount(anArray){
 	return newArray;
 }
 
-function CountOutDegreeFromEdges(array) {
-  var count = {};
-  array.forEach(val => count[val["source"]] = (count[val["source"]] || 0) + 1);
-  return count;
-}
+// function CountOutDegreeFromEdges(array) {
+//   var count = {};
+//   array.forEach(val => count[val["source"]] = (count[val["source"]] || 0) + 1);
+//   return count;
+// }
 
-let sizeDictionary = CountOutDegreeFromEdges(edges)
-console.log("Size Dictionary")
-console.log(sizeDictionary)
+// let sizeDictionary = CountOutDegreeFromEdges(edges)
+// console.log("Size Dictionary")
+// console.log(sizeDictionary)
 
-const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
-let sizeSum = sumValues(sizeDictionary)
-console.log("Size Sum")
-console.log(sizeSum)
-for (const [key, value] of Object.entries(nodes)) {
-  nodes[key]["size"] = Math.log10(sizeDictionary[key]+5);
-}
+// const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+// let sizeSum = sumValues(sizeDictionary)
 
+// console.log("Size Sum")
+// console.log(sizeSum)
+// for (const [key, value] of Object.entries(nodes)) {
+//     nodes[key]["size"] = Math.pow(Math.log(sizeDictionary[key])+1.5, 1.2);
+// }
+
+console.log("Nodes")
+console.log(nodes)
 
 
 // Set up some stuff for the network...
@@ -170,7 +173,12 @@ let helios = new Helios({
         "-1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white";
     }
     if (node.username) {
-      tooltipElement.textContent = node.username + ' (' + sizeDictionary[node.ID] + ' retweets)';
+    //   let num_rts = sizeDictionary[node.ID];
+    //   console.log(num_rts)
+    //   if (typeof num_rts == 'undefined'){
+    //       num_rts = 1
+    //   }
+      tooltipElement.textContent = node.username + ' (' + node.retweets + ' retweets)';
     }else if (node.label) {
       tooltipElement.textContent = node.label;
     }else if (node.title) {
@@ -197,7 +205,12 @@ let helios = new Helios({
   if (node) {
     // tooltipElement.style.display = "block";
     if (node.username) {
-      tooltipElement.textContent = node.username + ' (' + sizeDictionary[node.ID] + ' retweets)';
+        // let num_rts = sizeDictionary[node.ID];
+        // console.log(num_rts);
+        // if (typeof num_rts == 'undefined'){
+        //     num_rts = 1
+        // }
+        tooltipElement.textContent = node.username + ' (' + node.retweets + ' retweets)';
     }else if (node.label) {
       tooltipElement.textContent = node.label;
     }else if (node.title) {
