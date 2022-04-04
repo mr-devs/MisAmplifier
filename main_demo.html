@@ -110,6 +110,14 @@
 
     }
 
+    #menuleftcontent{
+    float: left;
+    width: 600px;
+    margin-top: 200px;
+    background-color: #CCCCCC;
+    border-style: double;
+}
+
     #selectionmenu .menuEntry{
       display: flex;
       align-items: center;
@@ -278,18 +286,15 @@
   </head>
 
   <body>
-    <div>
-      <h4 style="color: black; margin:0px">
+    <!-- <div style="align-items: left;">
+      <h4 style="color: black; margin:0px;">
         Search for misinformation cascades
       </h4>
       <form action="/form/submit" method="GET"> 
         <input type="text" name="text" class="search" placeholder="Example: #vaccines">
         <input type="submit" name="submit" class="submit" value="Search">
       </form>
-      <!-- <div class="'container">
-          <input type="file">
-      </div> -->
-    </div>
+    </div> -->
     <div id="netviz"></div>
     <div id="tooltip">Tooltip</div>
     <div id="selectionmenu"></div>
@@ -299,6 +304,30 @@
       <br>
       press space to stop or start the layout
     </div>
+    <div id="menuleftcontent">
+      <h4 style="color: black; text-align: center;">
+        Search for misinformation cascades
+      </h4>
+      <form action="/form/submit" method="GET"> 
+        <input type="text" name="text" class="search" placeholder="Example: #vaccines">
+        <input type="submit" name="submit" class="submit" value="Search">
+      </form>
+      <br>
+      <div style="margin-left: 100px">
+        <ol>
+          <li>Superspreader #1</li>
+          <li>Superspreader #2</li>
+          <li>Superspreader #3</li>
+          <li>Superspreader #4</li>
+          <li>Superspreader #5</li>
+          <li>Superspreader #6</li>
+          <li>Superspreader #7</li>
+          <li>Superspreader #8</li>
+          <li>Superspreader #9</li>
+          <li>Superspreader #10</li>
+        </ol>
+      </div>
+  </div>
   </body>
 
 </html>
