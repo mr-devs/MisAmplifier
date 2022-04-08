@@ -253,7 +253,7 @@ let buttonInformation = {
 }
 
 // This function is what I would like to happen
-// (logically, atleast) when the "Switch" button is clicked.
+// (logically, at least) when the "Switch" button is clicked.
 // Right now, this function is not used because it breaks the visualization.
 // To test it, uncomment the function in the 'buttonInformation' (directly above)
 
@@ -274,7 +274,6 @@ function updateColors() {
   helios.update();
   helios.render();
 }
-
 
 let buttonOrder = ["Switch"];
 
