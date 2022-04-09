@@ -100,17 +100,24 @@ if(autoStartLayout === null){
   autoStartLayout = !bigNetwork;
 }
 
-let allColors = {};
-Object.assign(allColors, d3Chromatic);
-console.log("Colors")
-console.log(allColors);
-let colorScale = d3ScaleOrdinal(allColors.schemeCategory10);
+// let allColors = {};
+// Object.assign(allColors, d3Chromatic);
+// console.log("Colors")
+// console.log(allColors);
+// let colorScale = d3ScaleOrdinal(allColors.schemeCategory10);
+
+let colorScale = {};
+
+colorScale['other'] = d3rgb("blue");
+colorScale['rt_of_amplifier'] = d3rgb("yellow");
+colorScale['amplifier'] = d3rgb("red");
+
 
 // Ensure each type of node is assigned the color we expect
 //    See the nodes_all.json file's `color_X` key/value pairs
-colorScale('other')
-colorScale('rt_of_amplifier')
-colorScale('amplifier')
+// colorScale('other')
+// colorScale('rt_of_amplifier')
+// colorScale('amplifier')
 
 // Activate Helios
 let helios = new Helios({
@@ -216,87 +223,162 @@ let helios = new Helios({
     'https://twitter.com/i/user/' + user_id,
     '_blank'
   );
+  // helios.centerOnNodes([node.ID],500);
 })
 .nodeColor(node=>{ 
   // console.log(colorScale)
   let color;
   if(COLOR_MODE == 'reconstructed'){
-    color = d3rgb(colorScale(node.color_reconstructed));
+    color = colorScale[node.color_reconstructed];
   }else if(COLOR_MODE == 'naive'){
-    color = d3rgb(colorScale(node.color_naive));
+    color = colorScale[node.color_naive];
   }
   // console.log(typeof color)
   // console.log(color)
   // console.log(""+[color.r,color.g,color.b])
   return [color.r/255,color.g/255,color.b/255];
 })
+.onEdgeHoverStart((edge, event) => {
+  if (event) {
+      tooltipElement.style.left = event.pageX + "px";
+      tooltipElement.style.top = event.pageY + "px";
+  }
+  if (edge) {
+      tooltipElement.style.display = "block";
+      if(this.backgroundBlack){
+          tooltipElement.style.color = d3rgb(edge.source.color[0] * 255, edge.source.color[1] * 255, edge.source.color[2] * 255).brighter(2).formatRgb();
+          tooltipElement.style["text-shadow"] =
+          "-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black";
+      }else{
+          tooltipElement.style.color = d3rgb(edge.source.color[0] * 255, edge.source.color[1] * 255, edge.source.color[2] * 255).darker(2).formatRgb();
+          tooltipElement.style["text-shadow"] =
+              "-1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white";
+      }
+      let fromLabel = "";
+      let toLabel = "";
+      if (edge.source.label) {
+          fromLabel = edge.source.label;
+      }else if (edge.source.title) {
+          fromLabel = edge.source.title;
+      }else{
+          fromLabel = edge.source.ID;
+      }
+      if (edge.target.label) {
+          toLabel = edge.target.label;
+      }else if (edge.target.title) {
+          toLabel = edge.target.title;
+      }else{
+          toLabel = edge.target.ID;
+      }
+      tooltipElement.textContent = fromLabel+" - "+toLabel;
+      edge.source.originalSize = edge.source.size;
+      edge.target.originalSize = edge.target.size;
+      edge.source.size = 2.0 * edge.source.originalSize;
+      edge.target.size = 2.0 * edge.target.originalSize;
+      edge.source.outlineWidth = 0.25 * edge.source.originalSize;
+      edge.target.outlineWidth = 0.25 * edge.target.originalSize;
+      helios.update();
+      helios.render();
+  } else {
+      tooltipElement.style.display = "none";
+  }
+})
+.onEdgeHoverMove((edge, event) => {
+  if (event) {
+      tooltipElement.style.left = event.pageX + "px";
+      tooltipElement.style.top = event.pageY + "px";
+  }
+  if (edge) {
+      // tooltipElement.style.display = "block";
+      let fromLabel = "";
+      let toLabel = "";
+      if (edge.source.label) {
+          fromLabel = edge.source.label;
+      }else if (edge.source.title) {
+          fromLabel = edge.source.title;
+      }else{
+          fromLabel = edge.source.ID;
+      }
+      if (edge.target.label) {
+          toLabel = edge.target.label;
+      }else if (edge.target.title) {
+          toLabel = edge.target.title;
+      }else{
+          toLabel = edge.target.ID;
+      }
+      tooltipElement.textContent = fromLabel+" - "+toLabel;
+  } else {
+      tooltipElement.style.display = "none";
+  }
+})
+.onEdgeHoverEnd((edge, event) => {
+  if (event) {
+      tooltipElement.style.left = event.pageX + "px";
+      tooltipElement.style.top = event.pageY + "px";
+  }
+  if (edge) {
+      edge.source.size = 1.0 * edge.source.originalSize;
+      edge.target.size = 1.0 * edge.target.originalSize;
+      edge.source.outlineWidth = defaultOutline * edge.source.originalSize;
+      edge.target.outlineWidth = defaultOutline * edge.target.originalSize;
+      helios.update();
+      helios.render();
+  }
+      tooltipElement.style.display = "none";
+})
 .backgroundColor(backgroundColor)
 .nodeOutlineWidth(node=>node.size*defaultOutline)
 .nodeOutlineColor(backgroundColor)
 .additiveBlending(additiveBlending)
 .nodeOpacity(1)
-.edgesOpacity(0.25);
+.edgesOpacity(.5);
 
 
-let buttonInformation = {
-  "Switch": {
-    name: "Switch",
-    mapColor: "#B1C3B6",
-    color: "#008758",
-    action: null,
-    extra: selection => {
-      console.log('Switching colors...')
-      // updateColors();
-      console.log("Action!");
-    }
-  }
-}
-
-// This function is what I would like to happen
-// (logically, at least) when the "Switch" button is clicked.
-// Right now, this function is not used because it breaks the visualization.
-// To test it, uncomment the function in the 'buttonInformation' (directly above)
 
 function updateColors() {
+  
+  if(COLOR_MODE == 'reconstructed'){
+    console.log('recon -> naive');
+    COLOR_MODE = 'naive';
+  }else if(COLOR_MODE == 'naive'){
+    console.log('naive -> recon');
+    COLOR_MODE = 'reconstructed';
+  }
+  
   helios.nodeColor(node=> {
     let color;
-    if(COLOR_MODE == 'reconstructed'){
-      console.log('recon -> naive');
-      COLOR_MODE = 'naive';
-      color = d3rgb(colorScale(node.color_naive));
-    }else if(COLOR_MODE == 'naive'){
-      console.log('naive -> recon');
-      COLOR_MODE = 'reconstructed';
-      color = d3rgb(colorScale(node.color_reconstructed));
+    if(COLOR_MODE == 'naive'){
+      color = colorScale[node.color_naive];
+    }else if(COLOR_MODE == 'reconstructed'){
+      color = colorScale[node.color_reconstructed];
     }
-    return [color.r, color.g, color.b];
+    return [color.r/255, color.g/255, color.b/255];
   })
   helios.update();
   helios.render();
 }
 
-let buttonOrder = ["Switch"];
-
-d3Select("#selectionmenu")
-  .selectAll("span.menuEntry")
-  .data(buttonOrder)
-  .enter()
-  .append("span")
-  .classed("menuEntry", true)
-  .style("--color", d => buttonInformation[d].color)
-  .text(d => buttonInformation[d].name)
-  .each(function (d) {
-    d3Select(this).call(buttonInformation[d].extra);
-  });
-d3Select("#selectionmenu")
-  .selectAll("span.menuEntry")
-  .filter(d => buttonInformation[d].action != null)
-  .on("click", (event, d) => {
-    if (buttonInformation[d].action) {
-      buttonInformation[d].action(d3Select(this), d, event);
-    }
-  })
-  .classed("hasAction", true);
+// function updateColors() {
+//   helios.nodeColor(node=> {
+//     let color;
+//     // console.log('recon -> naive');
+//     // COLOR_MODE = 'naive';
+//     // color = d3rgb(colorScale(node.color_naive));
+//     if(COLOR_MODE == 'reconstructed'){
+//       console.log('recon -> naive');
+//       COLOR_MODE = 'naive';
+//       color = d3rgb(colorScale(node.color_naive));
+//     }else if(COLOR_MODE == 'naive'){
+//       console.log('naive -> recon');
+//       COLOR_MODE = 'reconstructed';
+//       color = d3rgb(colorScale(node.color_reconstructed));
+//     }
+//     // console.log(color)
+//     return [color.r/255, color.g/255, color.b/255];
+//   })
+//   helios.update();
+//   helios.render();
+// }
 
 document.addEventListener('keyup', event => {
   if (event.code === 'Space') {
@@ -319,3 +401,15 @@ if(startZoomLevel){
   }
 }
 
+
+
+function clickHandler () {
+  console.log('clicked')
+  updateColors()
+}
+
+const btnNaive = document.querySelector('#switchbutton_naive');
+btnNaive.addEventListener('click', clickHandler);
+
+const btnReconstrcuted = document.querySelector('#switchbutton_reconstructed');
+btnReconstrcuted.addEventListener('click', clickHandler);
