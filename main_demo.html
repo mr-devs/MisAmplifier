@@ -8,20 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./main.css" media="screen"/>
     <script type="module" src="./helios_main.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
 
   <body>
     <div id="netviz"></div>
     <div id="tooltip">Tooltip</div>
-    <div id="selectionmenu"></div>
+    <!-- <div id="selectionmenu"></div> -->
     <div id="loading"></div>
     <div id="message">
       double-click a node to visit that user on Twitter
       <br>
       press space to stop or start the layout
     </div>
+    <!-- <button id="switchbutton">
+      Switch
+    </button> -->
     <div id="menuleftcontent">
-      <div class="container1">
+      <div class="container">
         <div class="fixed">
           <img src="./speaker.svg" style="height: 50px;">
         </div>
@@ -30,44 +34,69 @@
         </div>
 
       </div>
-      <form action="/form/submit" method="GET"> 
-        <input type="text" name="text" class="search" placeholder="Example: #vaccines">
-        <input type="submit" name="submit" class="submit" value="Search">
-      </form>
-      <br>
-      <div class="container" style="margin-left: 50px">
-        <div class="fixed">
-          <p>Naive</p>
-          <ol>
-            <li>Superspreader #1</li>
-            <li>Superspreader #2</li>
-            <li>Superspreader #3</li>
-            <li>Superspreader #4</li>
-            <li>Superspreader #5</li>
-            <li>Superspreader #6</li>
-            <li>Superspreader #7</li>
-            <li>Superspreader #8</li>
-            <li>Superspreader #9</li>
-            <li>Superspreader #10</li>
-          </ol>
+
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Password</label>
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Example: #vaccines">
         </div>
-        <div class="flex-item">
-          <p>Reconstructed</p>
-          <ol>
-            <li>Superspreader #1</li>
-            <li>Superspreader #2</li>
-            <li>Superspreader #3</li>
-            <li>Superspreader #4</li>
-            <li>Superspreader #5</li>
-            <li>Superspreader #6</li>
-            <li>Superspreader #7</li>
-            <li>Superspreader #8</li>
-            <li>Superspreader #9</li>
-            <li>Superspreader #10</li>
-          </ol>
+        <button type="submit" class="btn btn-primary mb-2">Search</button>
+      </form>
+
+      <br>
+      
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary btn-block" id="switchbutton_naive">
+              <h5 class="card-title">Naive</h5>
+            </button>
+            <ul class="list-group">
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #1</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #2</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #3</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #4</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #5</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #6</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #7</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #8</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #9</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #10</li>
+            </ul>
+          </div>
+          <!-- <div class="card-footer">
+            <small class="text-muted">Top amplifiers based on naive Twitter data</small>
+          </div> -->
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <button type="button" class="btn btn-primary btn-block" id="switchbutton_reconstructed">
+              <h5 class="card-title" style="text-align">Reconstructed</h5>
+            </button>
+            <ul class="list-group">
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #1</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #2</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #3</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #4</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #5</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #6</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #7</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #8</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #9</li>
+              <li class="list-group-item" style="font-size: 10px;">Superspreader #10</li>
+            </ul>
+          </div>
+          <!-- <div class="card-footer">
+            <small class="text-muted">Top amplifiers based on reconstructed Twitter data</small>
+          </div> -->
         </div>
       </div>
   </div>
+
+  <!-- Below is needed for bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 
 </html>
