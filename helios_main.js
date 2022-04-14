@@ -109,8 +109,8 @@ if(autoStartLayout === null){
 let colorScale = {};
 
 colorScale['other'] = d3rgb("blue");
-colorScale['rt_of_amplifier'] = d3rgb("yellow");
-colorScale['amplifier'] = d3rgb("red");
+colorScale['retweeter'] = d3rgb("gold");
+colorScale['problem_node'] = d3rgb("red");
 
 
 // Ensure each type of node is assigned the color we expect
@@ -330,7 +330,7 @@ let helios = new Helios({
 })
 .backgroundColor(backgroundColor)
 .nodeOutlineWidth(node=>node.size*defaultOutline)
-.nodeOutlineColor(backgroundColor)
+.nodeOutlineColor(backgroundColor) // .nodeOutlineColor([0,0,0,.25])
 .additiveBlending(additiveBlending)
 .nodeOpacity(1)
 .edgesOpacity(.5);

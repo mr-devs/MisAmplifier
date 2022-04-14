@@ -19,8 +19,8 @@ html, body {
 #netviz {
   position: absolute;
   top: 40px;
-  right: 15px;
-  left: 605px; /* Tied to the `margin-left` item in #menuleftcontent*/
+  right: 10px;
+  left: 555px; /* Tied to the `margin-left` item in #menuleftcontent*/
   bottom: 40px;
   background: #FFFFFF;
 }
@@ -35,7 +35,7 @@ html, body {
 /* For the menu on the left */
 #menuleftcontent{
   float: left;
-  width: 600px;
+  width: 550px;
   margin-top: 200px;
   margin-left: 5px; /* Tied to the `left` item in #netviz*/
   background-color: #fff;
