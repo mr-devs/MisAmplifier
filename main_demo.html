@@ -22,6 +22,7 @@
     </div>
 
     <div id="menuleftcontent">
+      <!-- Image and MisAmplifier title -->
       <div class="container">
         <div class="fixed">
           <img src="./speaker.svg" style="height: 50px;">
@@ -29,27 +30,24 @@
         <div class="flex-item">
           <h2>MisAmplifier</h2>
         </div>
-
       </div>
 
+      <!-- Search field -->
       <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">Password</label>
-          <input type="password" class="form-control" id="inputPassword2" placeholder="Example: #vaccines">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Search</button>
+        <input class="form-control mr-sm-2 flex-item" type="search" id="inputPassword" placeholder="Example: #vaccines" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit" id="SearchButton">Search</button>
       </form>
 
       <br>
       
+      <!-- Lists of users field -->
       <div class="card-group">
         <div class="card">
           <div class="card-body">
             <button type="button" class="btn btn-primary btn-block" id="switchbutton_naive">
               <h5 class="card-title">Naive</h5>
             </button>
-            
-            <ul class="list-group" style="text-align: center;">
+            <ul class="list-group" data-toggle="list" style="text-align: center;">
               <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">Superspreader #1</a>
               <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">Superspreader #2</a>
               <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">Superspreader #3</a>
@@ -62,8 +60,8 @@
               <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">Superspreader #10</a>
             </ul>
           </div>
-          <!-- <div class="card-footer">
-            <small class="text-muted">Top amplifiers based on naive Twitter data</small>
+          <!-- <div class="card-footer" style="text-align: center;">
+            <small class="text-muted">Based on <strong>naive</strong> Twitter data</small>
           </div> -->
         </div>
         <div class="card">
@@ -85,8 +83,8 @@
               <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">Superspreader #10</a>
             </ul>
           </div>
-          <!-- <div class="card-footer">
-            <small class="text-muted">Top amplifiers based on reconstructed Twitter data</small>
+          <!-- <div class="card-footer" style="text-align: center;">
+            <small class="text-muted">Based on <strong>reconstructed</strong> Twitter data</small>
           </div> -->
         </div>
       </div>

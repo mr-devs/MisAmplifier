@@ -120,6 +120,8 @@ colorScale['amplifier'] = d3rgb("red");
 // colorScale('amplifier')
 
 // Activate Helios
+
+
 let helios = new Helios({
   elementID: "netviz", // ID of the element to render the network in
   nodes: nodes, // Dictionary of nodes 
@@ -334,7 +336,6 @@ let helios = new Helios({
 .edgesOpacity(.5);
 
 
-
 function updateColors() {
   
   if(COLOR_MODE == 'reconstructed'){
@@ -344,7 +345,7 @@ function updateColors() {
     console.log('naive -> recon');
     COLOR_MODE = 'reconstructed';
   }
-  
+   
   helios.nodeColor(node=> {
     let color;
     if(COLOR_MODE == 'naive'){
@@ -358,28 +359,7 @@ function updateColors() {
   helios.render();
 }
 
-// function updateColors() {
-//   helios.nodeColor(node=> {
-//     let color;
-//     // console.log('recon -> naive');
-//     // COLOR_MODE = 'naive';
-//     // color = d3rgb(colorScale(node.color_naive));
-//     if(COLOR_MODE == 'reconstructed'){
-//       console.log('recon -> naive');
-//       COLOR_MODE = 'naive';
-//       color = d3rgb(colorScale(node.color_naive));
-//     }else if(COLOR_MODE == 'naive'){
-//       console.log('naive -> recon');
-//       COLOR_MODE = 'reconstructed';
-//       color = d3rgb(colorScale(node.color_reconstructed));
-//     }
-//     // console.log(color)
-//     return [color.r/255, color.g/255, color.b/255];
-//   })
-//   helios.update();
-//   helios.render();
-// }
-
+// Captures spacebar
 document.addEventListener('keyup', event => {
   if (event.code === 'Space') {
     if(helios.layoutWorker.isRunning()){
@@ -408,8 +388,17 @@ function clickHandler () {
   updateColors()
 }
 
+// function initiateHelios () {
+//   console.log('initiate Helios clicked')
+// }
+
 const btnNaive = document.querySelector('#switchbutton_naive');
 btnNaive.addEventListener('click', clickHandler);
 
-const btnReconstrcuted = document.querySelector('#switchbutton_reconstructed');
-btnReconstrcuted.addEventListener('click', clickHandler);
+const btnReconstructed = document.querySelector('#switchbutton_reconstructed');
+btnReconstructed.addEventListener('click', clickHandler);
+
+$('#listNaive a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
