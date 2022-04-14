@@ -1,41 +1,4 @@
-#netviz {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  left: 600px;
-  bottom: 25px;
-  background: #FFFFFF;
-}
-.overlay{
-  position: absolute;
-  top:0;
-  right:0;
-  left:0;
-  bottom:0;
-}
-#tooltip {
-    position: absolute;
-    display: none;
-    margin-left: 15px;
-    padding: 3px;
-    position: absolute;
-    z-index: 1000;
-    text-shadow:
-        -1px -1px 0 #FFF,
-         1px -1px 0 #FFF,
-        -1px  1px 0 #FFF,
-         1px  1px 0 #FFF;
-    pointer-events: none;
-}
-
-#menuleftcontent{
-  float: left;
-  width: 600px;
-  margin-top: 200px;
-  background-color: #fff;
-  border-style: double;
-}
-
+/* High-level stuff for the webpage */
 html, body {
   font-family: -apple-system, 'Helvetica Neue', "Arial", BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
   position: fixed;
@@ -52,29 +15,66 @@ html, body {
                                 supported by Chrome, Edge, Opera and Firefox */
 }
 
-form {
-  width: 400px;
-  margin: auto;
-  margin-top: 10px;
+/* For the network visualization */
+#netviz {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  left: 605px;
+  bottom: 25px;
+  background: #FFFFFF;
+}
+.overlay{
+  position: absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
 }
 
-input {
+/* Controls what is shown when hovering over a node
+ - If removed, all information is shown in the top left corner
+*/
+#tooltip {
+    position: absolute;
+    display: none;
+    margin-left: 15px;
+    padding: 3px;
+    position: absolute;
+    z-index: 1000;
+    text-shadow:
+        -1px -1px 0 #FFF,
+         1px -1px 0 #FFF,
+        -1px  1px 0 #FFF,
+         1px  1px 0 #FFF;
+    pointer-events: none;
+}
+
+
+
+/* input {
   padding: 4px 10px;
   border: .1;
   font-size: 16px;
-}
+} */
 
-.search {
-  width: 75%;
-}
 
-.submit {
+/* .submit {
   width: 70px;
   background-color: #1c87c9;
   text-align: "center";
   color: #ffffff;
-}
+} */
 
+/* For the menu on the left */
+#menuleftcontent{
+  float: left;
+  width: 600px;
+  margin-top: 200px;
+  margin-left: 5px;
+  background-color: #fff;
+  border-style: double;
+}
 #div {
   color: #fff;
   font-family: Tahoma, Verdana, Segoe, sans-serif;
@@ -92,10 +92,25 @@ input {
   background-color:#fff;
   flex-grow: 1;
 }
+form {
+  width: 400px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+/* Bottom right message */
+#message{
+  position:absolute;
+  bottom:5px;
+  right:5px;
+  text-align: right;
+  font-size:small;
+  color: rgba(125,125,125,.75);
+}
 
 
 
-*,
+/* *,
   *::before,
   *::after {
     box-sizing: border-box;
@@ -120,15 +135,6 @@ input {
   }
   @-webkit-keyframes spin {
     to { -webkit-transform: rotate(360deg); }
-  }
-
-  #message{
-    position:absolute;
-    bottom:5px;
-    right:5px;
-    text-align: right;
-    font-size:small;
-    color: rgba(125,125,125,.75);
   }
     
 #selectionmenu {
@@ -306,4 +312,4 @@ select[multiple] option {
 
 .selector + label {
   margin-top: 2rem;
-}
+} */
