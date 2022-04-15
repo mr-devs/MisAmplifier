@@ -21,8 +21,10 @@
       press space to stop or start the layout
     </div>
 
+    <!-- Content to the left of the visualization begins here -->
     <div id="menuleftcontent">
-      <!-- Image and MisAmplifier title -->
+
+      <!-- MisAmplifier title -->
       <div class="container" style="width: 400px;">
         <div class="fixed">
           <h2>MisAmplifier</h2>
@@ -40,14 +42,16 @@
       </div>
 
       <br>
-      
+
       <!-- Lists of users field -->
       <div id="leftData" class="collapse">
         <div class="card-group">
+
+          <!-- NAIVE USERS -->
           <div class="card">
             <div class="card-body">
               <button type="button" class="btn btn-primary btn-block" id="switchbutton_naive">
-                <h5 class="card-title" style="padding-top: 10px;">Naive</h5>
+                <h5 class="card-title" style="padding-top: 10px;">Originators</h5>
               </button>
               <ul class="list-group" style="text-align: left">
                 <a href="https://twitter.com/i/user/2567365058" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">1. @naretevduorp</a>
@@ -62,14 +66,13 @@
                 <a href="https://twitter.com/i/user/2301990517" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">10. @barnes_law</a>
               </ul>
             </div>
-            <!-- <div class="card-footer" style="text-align: center;">
-              <small class="text-muted">Based on <strong>naive</strong> Twitter data</small>
-            </div> -->
           </div>
+
+          <!-- RECONSTRUCTED USERS -->
           <div class="card">
             <div class="card-body">
               <button type="button" class="btn btn-primary btn-block" id="switchbutton_reconstructed">
-                <h5 class="card-title" style="padding-top: 10px;">Reconstructed</h5>
+                <h5 class="card-title" style="padding-top: 10px;">Amplifiers</h5>
               </button>
               <!-- <ul class="list-group list-group-flush" style="text-align: center;"> -->
               <ul class="list-group" style="text-align: left;">
@@ -85,12 +88,11 @@
                 <a href="https://twitter.com/i/user/223831644" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">10. @coolfunnytshirt</a>
               </ul>
             </div>
-            <!-- <div class="card-footer" style="text-align: center;">
-              <small class="text-muted">Based on <strong>reconstructed</strong> Twitter data</small>
-            </div> -->
           </div>
+
         </div>
       </div>
+    </div>
   </div>
 
   <!-- Below is needed for bootstrap -->

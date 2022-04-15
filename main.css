@@ -15,6 +15,7 @@ html, body {
                                 supported by Chrome, Edge, Opera and Firefox */
 }
 
+
 /* For the network visualization */
 #netviz {
   position: absolute;
@@ -31,6 +32,7 @@ html, body {
   left:0;
   bottom:0;
 }
+
 
 /* For the menu on the left */
 #menuleftcontent{
@@ -64,6 +66,7 @@ form {
   margin-top: 10px;
 }
 
+
 /* Controls what is shown when hovering over a node
  - If removed, all information is shown in the top left corner
 */
@@ -82,6 +85,7 @@ form {
     pointer-events: none;
 }
 
+
 /* Bottom right message */
 #message{
   position:absolute;
@@ -91,6 +95,7 @@ form {
   font-size:small;
   color: rgba(125,125,125,.75);
 }
+
 
 /* Creates the spinning icon on space-bar push */
 *,
