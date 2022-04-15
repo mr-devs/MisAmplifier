@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <div id="netviz"></div>
+    <div id="netviz" style="visibility:hidden;"></div>
     <div id="tooltip">Tooltip</div>
     <div id="loading"></div>
     <div id="message">
@@ -36,7 +36,15 @@
         <div class="input-group justify-content-md-center">
           <input type="text" class="form-control" placeholder="Example: #vaccines" aria-label="ExampleText" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search</button>
+            <!-- <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search</button> -->
+            <button onclick="showViz()" class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search phrase</button>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="width: 400px;">
+        <div class="input-group justify-content-md-center">
+          <div class="fixed">
+            <button onclick="showViz()" class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search low-credibility links</button>
           </div>
         </div>
       </div>
@@ -94,6 +102,12 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    function showViz() {
+      document.getElementById("netviz").style.visibility = "visible";
+    }
+  </script>
 
   <!-- Below is needed for bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

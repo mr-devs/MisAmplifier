@@ -14,7 +14,7 @@ import { select as d3Select } from 'https://cdn.skypack.dev/d3-selection';
 // Ensure each type of node is assigned the color we expect
 //    See the nodes_all.json file's `color_X` key/value pairs
 let colorScale = {};
-colorScale['other'] = d3rgb("blue");
+colorScale['other'] = d3rgb("dodgerblue");
 colorScale['retweeter'] = d3rgb("gold");
 colorScale['problem_node'] = d3rgb("red");
 
@@ -192,7 +192,7 @@ let helios = new Helios({
 .nodeOutlineWidth(node=>node.size*defaultOutline)
 .nodeOutlineColor(backgroundColor) // .nodeOutlineColor([0,0,0,.25])
 .additiveBlending(additiveBlending)
-.nodeOpacity(1)
+.nodeOpacity(.9)
 .edgesOpacity(.5);
 
 
