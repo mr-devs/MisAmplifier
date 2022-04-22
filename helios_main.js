@@ -49,8 +49,8 @@ if (nodes_response.ok) {
 }
 
 // *** SET COLOR MODE *** 
-let COLOR_MODE = 'reconstructed'; // highlight superspreaders/amplifiers based on RECONSTRUCTED data
-// let COLOR_MODE = 'naive';         // highlight superspreaders/amplifiers based on NAIVE (raw Twitter) data
+// let COLOR_MODE = 'reconstructed'; // highlight superspreaders/amplifiers based on RECONSTRUCTED data
+let COLOR_MODE = 'naive';         // highlight superspreaders/amplifiers based on NAIVE (raw Twitter) data
 
 
 // Set up some stuff for the network...

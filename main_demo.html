@@ -41,10 +41,11 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="container" style="width: 400px;">
         <div class="input-group justify-content-md-center">
           <div class="fixed">
-            <button onclick="showViz()" class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search low-credibility links</button>
+            <button onclick="showViz()" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#leftData" aria-expanded="false" aria-controls="leftData">Search low-credibility links</button>
           </div>
         </div>
       </div>
@@ -56,12 +57,12 @@
         <div class="card-group">
 
           <!-- NAIVE USERS -->
-          <div class="card">
+          <div class="card border-light">
             <div class="card-body">
-              <button type="button" class="btn btn-primary btn-block" id="switchbutton_naive">
+              <button type="button" class="btn btn-light btn-block active" id="switchbutton_naive" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="naiveList originalList">
                 <h5 class="card-title" style="padding-top: 10px;">Originators</h5>
               </button>
-              <ul class="list-group" style="text-align: left">
+              <ul id="naiveList" class="list-group collapse multi-collapse show" style="text-align: left">
                 <a href="https://twitter.com/i/user/2567365058" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">1. @naretevduorp</a>
                 <a href="https://twitter.com/i/user/1121554471" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">2. @swati_gs</a>
                 <a href="https://twitter.com/i/user/6742412" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">3. @jennybethm</a>
@@ -77,13 +78,12 @@
           </div>
 
           <!-- RECONSTRUCTED USERS -->
-          <div class="card">
+          <div class="card border-light">
             <div class="card-body">
-              <button type="button" class="btn btn-primary btn-block" id="switchbutton_reconstructed">
+              <button type="button" class="btn btn-light btn-block active" aria-pressed="true" id="switchbutton_reconstructed" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="naiveList originalList">
                 <h5 class="card-title" style="padding-top: 10px;">Amplifiers</h5>
               </button>
-              <!-- <ul class="list-group list-group-flush" style="text-align: center;"> -->
-              <ul class="list-group" style="text-align: left;">
+              <ul id="originalList" class="list-group collapse multi-collapse" style="text-align: left;">
                 <a href="https://twitter.com/i/user/347627434" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">1. @LindaSuhler</a>
                 <a href="https://twitter.com/i/user/25101996" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">2. @kimguilfoyle</a>
                 <a href="https://twitter.com/i/user/39344374" target="_blank" class="list-group-item list-group-item-action" style="font-size: 14px; font-weight: bold; color: red;">3. @DonaldJTrumpJr</a>
