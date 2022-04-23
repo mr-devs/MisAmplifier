@@ -105,7 +105,12 @@
 
   <script type="text/javascript">
     function showViz() {
-      document.getElementById("netviz").style.visibility = "visible";
+      let vis = document.getElementById("netviz").style.visibility;
+      if (vis == "hidden") {
+        document.getElementById("netviz").style.visibility = "visible";
+      } else {
+        document.getElementById("netviz").style.visibility = "hidden";
+      }
     }
   </script>
 
