@@ -1,4 +1,4 @@
-import {Helios} from "https://cdn.skypack.dev/helios-web?min";
+import {Helios} from "https://cdn.skypack.dev/helios-web@0.4.5?min";
 import {rgb as d3rgb} from "https://cdn.skypack.dev/d3-color";
 import { select as d3Select } from 'https://cdn.skypack.dev/d3-selection';
 
